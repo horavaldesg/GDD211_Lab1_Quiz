@@ -9,10 +9,19 @@ public class AnimationEvent : MonoBehaviour
 {
 	[SerializeField] private Animator puppy3Animator;
 	[SerializeField] private ParticleSystem magicSpellParticleSystem;
-
+	float speed;
 	private void Update()
 	{
-
+		speed = Input.GetAxisRaw("Vertical");
+		if (Input.GetAxisRaw("Vertical") > 0f) //Walk
+		{
+			transform.position += new Vector3(Time.deltaTime * 0.3f, 0f);
+			puppy3Animator.SetFloat("Speed", speed);
+		}
+		else //Idle
+		{
+			puppy3Animator.SetFloat("Speed", speed);
+		}
 	}
 
 	public void PuppyMagicSpell()

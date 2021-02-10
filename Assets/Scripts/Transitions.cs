@@ -8,16 +8,18 @@
 public class Transitions : MonoBehaviour
 {
 	[SerializeField] private Animator puppy1Animator;
-
+	float speed;
 	private void Update()
 	{
+		speed = Input.GetAxisRaw("Vertical");
 		if (Input.GetAxisRaw("Vertical") > 0f) //Walk
 		{
 			transform.position += new Vector3(Time.deltaTime * 0.3f, 0f);
+			puppy1Animator.SetFloat("Speed", speed);
 		}
 		else //Idle
 		{
-
+			puppy1Animator.SetFloat("Speed", speed);
 		}
 	}
 }
